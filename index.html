@@ -231,9 +231,10 @@
             box-shadow: 0 0 40px rgba(255,0,110,0.4);
         }
 
-        .detail-panel h3 {
-            font-size: 2rem;
+        .detail-panel .term-header {
             margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
         }
 
         #present .detail-panel h3 {
@@ -295,6 +296,58 @@
         .close-btn:hover {
             background: rgba(255,255,255,0.1);
             transform: rotate(90deg);
+        }
+
+        .speak-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-left: 15px;
+            vertical-align: middle;
+        }
+
+        #present .speak-btn {
+            border-color: #00d9ff;
+            color: #00d9ff;
+        }
+
+        #present .speak-btn:hover {
+            background: rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0,217,255,0.5);
+            transform: scale(1.1);
+        }
+
+        #otherwise .speak-btn {
+            border-color: #ff006e;
+            color: #ff006e;
+        }
+
+        #otherwise .speak-btn:hover {
+            background: rgba(255, 0, 110, 0.3);
+            box-shadow: 0 0 15px rgba(255,0,110,0.5);
+            transform: scale(1.1);
+        }
+
+        .speak-btn.speaking {
+            animation: pulse-speak 0.8s ease-in-out infinite;
+        }
+
+        @keyframes pulse-speak {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .detail-panel h3 {
+            display: inline-block;
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
         @media (max-width: 768px) {
@@ -375,8 +428,6 @@
 
         const glossaryOtherwise = [
             { term: "Empathy Protocol", pronunciation: "/ˈem.pə.θi ˈproʊ.t̬ə.kɑːl/", definition: "Standardized ethical frameworks ensuring AI systems prioritize dignity, cultural responsiveness, and emotional safety in every interaction, treating empathy as infrastructure rather than feature.", etymology: "", reason: "Transforms 'artificial empathy' from simulation to commitment; makes empathy a structural requirement like security protocols." },
-            { term: "Equity Algorithm", pronunciation: "/ˈek.wə.t̬i ˈæl.ɡə.rɪð.əm/", definition: "Computational systems explicitly designed to counteract bias, redistribute attention to marginalized voices, and repair rather than replicate historical harms.", etymology: "", reason: "Proactive replacement for 'algorithmic bias'; shifts from identifying problems to building solutions." },
-             { term: "Empathy Protocol", pronunciation: "/ˈem.pə.θi ˈproʊ.t̬ə.kɑːl/", definition: "Standardized ethical frameworks ensuring AI systems prioritize dignity, cultural responsiveness, and emotional safety in every interaction, treating empathy as infrastructure rather than feature.", etymology: "", reason: "Transforms 'artificial empathy' from simulation to commitment; makes empathy a structural requirement like security protocols." },
             { term: "Equity Algorithm", pronunciation: "/ˈek.wə.t̬i ˈæl.ɡə.rɪð.əm/", definition: "Computational systems explicitly designed to counteract bias, redistribute attention to marginalized voices, and repair rather than replicate historical harms.", etymology: "", reason: "Proactive replacement for 'algorithmic bias'; shifts from identifying problems to building solutions." }
         ];
 
@@ -429,7 +480,16 @@
             const panel = $(`#${panelId}`);
             let html = `
                 <button class="close-btn">&times;</button>
-                <h3>${data.term}</h3>
+                <div class="term-header">
+                    <h3>${data.term}</h3>
+                    <button class="speak-btn" data-term="${data.term}" title="Pronounce term">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                        </svg>
+                    </button>
+                </div>
                 <div class="pronunciation">${data.pronunciation}</div>
                 <div class="definition">
                     <div class="label">Definition</div>
@@ -479,6 +539,40 @@
             $(`#${panelId}`).on('click', '.close-btn', function() {
                 $(`#${panelId}`).removeClass('show');
                 $(`#${sectionId} .term-orbit`).removeClass('active');
+            });
+
+            // Speaker button functionality
+            $(`#${panelId}`).on('click', '.speak-btn', function() {
+                const term = $(this).data('term');
+                const btn = $(this);
+                
+                // Check if speech synthesis is supported
+                if ('speechSynthesis' in window) {
+                    // Cancel any ongoing speech
+                    window.speechSynthesis.cancel();
+                    
+                    // Create utterance
+                    const utterance = new SpeechSynthesisUtterance(term);
+                    utterance.rate = 0.8; // Slightly slower for clarity
+                    utterance.pitch = 1;
+                    utterance.volume = 1;
+                    
+                    // Add visual feedback
+                    btn.addClass('speaking');
+                    
+                    utterance.onend = function() {
+                        btn.removeClass('speaking');
+                    };
+                    
+                    utterance.onerror = function() {
+                        btn.removeClass('speaking');
+                    };
+                    
+                    // Speak the term
+                    window.speechSynthesis.speak(utterance);
+                } else {
+                    alert('Sorry, your browser does not support text-to-speech.');
+                }
             });
         }
 
