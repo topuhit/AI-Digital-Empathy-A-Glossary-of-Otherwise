@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Digital Empathy: A Glossary of Otherwise</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1429 100%);
+            color: #e0e6f0;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Header Section */
+        #intro {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(180deg, #0d1128 0%, #1a2340 100%);
+            border-bottom: 2px solid #00d9ff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #intro::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0,217,255,0.1) 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.6; }
+        }
+
+        #intro h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #00d9ff, #7b2ff7, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+            text-align: center;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(0,217,255,0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(123,47,247,0.8)); }
+        }
+
+        #intro p {
+            font-size: 1.4rem;
+            max-width: 100%;
+            text-align: center;
+            line-height: 1.8;
+            color: #b8c5d6;
+        }
+
+        .citation {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #7b8fa3;
+        }
+
+        .citation a {
+            color: #00d9ff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .citation a:hover {
+            color: #7b2ff7;
+            text-decoration: underline;
+        }
+
+        /* Glossary Sections */
+        .glossary-section {
+            min-height: 100vh;
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        #present {
+            background: linear-gradient(135deg, #1a2340 0%, #2d1b4e 100%);
+        }
+
+        #otherwise {
+            background: linear-gradient(135deg, #0f1a2e 0%, #1e3a5f 100%);
+        }
+
+        .glossary-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 800px;
+        }
+
+        .glossary-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5rem;
+            font-weight: 700;
+            z-index: 10;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        #present .glossary-title {
+            color: #00d9ff;
+            text-shadow: 0 0 20px rgba(0,217,255,0.6);
+        }
+
+        #otherwise .glossary-title {
+            color: #ff006e;
+            text-shadow: 0 0 20px rgba(255,0,110,0.6);
+        }
+
+        .term-orbit {
+            position: absolute;
+            cursor: pointer;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: 2px solid;
+            backdrop-filter: blur(10px);
+            z-index: 5;
+            white-space: nowrap;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0px) translateX(0px); }
+            25% { transform: translate(-50%, -50%) translateY(-15px) translateX(10px); }
+            50% { transform: translate(-50%, -50%) translateY(-8px) translateX(-12px); }
+            75% { transform: translate(-50%, -50%) translateY(12px) translateX(8px); }
+        }
+
+        #present .term-orbit {
+            background: rgba(0, 217, 255, 0.1);
+            border-color: #00d9ff;
+            color: #00d9ff;
+        }
+
+        #present .term-orbit:hover {
+            background: rgba(0, 217, 255, 0.3);
+            transform: translate(-50%, -50%) scale(1.15);
+            box-shadow: 0 0 25px rgba(0,217,255,0.6);
+            border-color: #7b2ff7;
+            color: #fff;
+            animation: none;
+        }
+
+        #otherwise .term-orbit {
+            background: rgba(255, 0, 110, 0.1);
+            border-color: #ff006e;
+            color: #ff006e;
+        }
+
+        #otherwise .term-orbit:hover {
+            background: rgba(255, 0, 110, 0.3);
+            transform: translate(-50%, -50%) scale(1.15);
+            box-shadow: 0 0 25px rgba(255,0,110,0.6);
+            border-color: #ffbd39;
+            color: #fff;
+            animation: none;
+        }
+
+        .term-orbit.active {
+            transform: translate(-50%, -50%) scale(1.2);
+            z-index: 15;
+            animation: none;
+        }
+
+        .detail-panel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: rgba(15, 20, 40, 0.95);
+            border: 2px solid;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 20;
+            backdrop-filter: blur(20px);
+        }
+
+        .detail-panel.show {
+            opacity: 1;
+            pointer-events: all;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        #present .detail-panel {
+            border-color: #00d9ff;
+            box-shadow: 0 0 40px rgba(0,217,255,0.4);
+        }
+
+        #otherwise .detail-panel {
+            border-color: #ff006e;
+            box-shadow: 0 0 40px rgba(255,0,110,0.4);
+        }
+
+        .detail-panel h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        #present .detail-panel h3 {
+            color: #00d9ff;
+        }
+
+        #otherwise .detail-panel h3 {
+            color: #ff006e;
+        }
+
+        .detail-panel .pronunciation {
+            font-style: italic;
+            color: #7b8fa3;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .detail-panel .definition,
+        .detail-panel .etymology,
+        .detail-panel .reason {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .detail-panel .label {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        #present .detail-panel .label {
+            color: #7b2ff7;
+        }
+
+        #otherwise .detail-panel .label {
+            color: #ffbd39;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #e0e6f0;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            background: rgba(255,255,255,0.1);
+            transform: rotate(90deg);
+        }
+
+        @media (max-width: 768px) {
+            #intro h1 {
+                font-size: 2rem;
+            }
+            .glossary-title {
+                font-size: 1.8rem;
+            }
+            .glossary-container {
+                height: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Introduction Section -->
+    <section id="intro">
+        <div class="container">
+            <h1>AI & Digital Empathy: A Glossary of Otherwise</h1>
+            <p>
+                Is AI just a machine without emotions, or can it show empathy? 
+                Do people feel empathy when they talk to AI?
+            </p>
+            <div class="citation">
+                <p>Citations:</p>
+                <p><a href="#" class="citation-link">The role of empathy for artificial intelligence accountability</a></p>
+                <p><a href="#" class="citation-link">Empathy: What It Means for an AI-Driven Organization</a></p>
+                <p><a href="#" class="citation-link">Artificial Empathy: Is It Still Empathy?</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Glossary of Present -->
+    <section id="present" class="glossary-section">
+        <div class="glossary-container">
+            <h2 class="glossary-title">Glossary of Present</h2>
+            <div id="present-terms"></div>
+            <div id="present-detail" class="detail-panel"></div>
+        </div>
+    </section>
+
+    <!-- Glossary of Otherwise -->
+    <section id="otherwise" class="glossary-section">
+        <div class="glossary-container">
+            <h2 class="glossary-title">Glossary of Otherwise</h2>
+            <div id="otherwise-terms"></div>
+            <div id="otherwise-detail" class="detail-panel"></div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const glossaryPresent = [
+            { term: "Empathy", pronunciation: "/ˈɛm-pə-thi/", definition: "The ability to understand and share the feelings of another.", etymology: "Greek empatheia", reason: "Core to AI ethics discussions." },
+            { term: "Artificial Empathy", pronunciation: "/ˌɑːr.tɪˈfɪʃ.əl ˈem.pə.θi/", definition: "Artificial empathy is the development of artificial intelligence that can detect, understand, and respond to human emotions in a way that seems considerate and supportive", etymology: "artificial empathy comes from the recent combination of the word artificial with the much older concept of empathy", reason: "Core concept constantly appearing in AI ethics discussions" },
+            { term: "Empathy Gap", pronunciation: "/ˈem.pə.θi ɡæp/", definition: "The difference between expected and delivered empathetic response in AI interactions.", etymology: "", reason: "AI agents may lack the emotional intelligence to handle sensitive or complex situations" },
+            { term: "Algorithmic Bias", pronunciation: "/ˌæl.ɡəˈrɪð.mɪk ˈbaɪ.əs/", definition: "Repeatable errors in AI systems that create unfair outcomes", etymology: "From Arabic al-Khwarizmi + French biais", reason: "Critical barrier to universal empathy" },
+            { term: "Emotional Intelligence", pronunciation: "/ɪˈmoʊ.ʃən.əl ɪnˈtel.ɪ.dʒəns/", definition: "The capacity to recognize, understand, and manage emotions.", etymology: "Latin emotio + intelligentia", reason: "Benchmark that AI aspires to." },
+            { term: "Sentiment Analysis", pronunciation: "/ˈsen.tɪ.mənt əˈnæl.ə.sɪs/", definition: "Computational identification and categorization of emotional tone in user data.", etymology: "Latin sentire + Greek analusis", reason: "Technical approach to detecting emotion." },
+            { term: "Anthropomorphism", pronunciation: "/ˌæn.θrə.pəˈmɔːr.fɪ.zəm/", definition: "The attribution of human characteristics to non-human entities.", etymology: "Greek anthropos (human) + morphē (form, shape).", reason: "Helps human-AI connection." },
+            { term: "Chatbot", pronunciation: "/ˈtʃæt.bɑːt/", definition: "Conversational AI program designed for human machine dialogue.", etymology: "Chat (informal talk) + bot (shortened from robot)", reason: "Primary interface to facilitate human conversation with machine." },
+            { term: "Parasocial Relationship", pronunciation: "/ˌper.ə.soʊ.ʃəl rɪˈleɪ.ʃən.ʃɪp/", definition: "One-sided relationship where one party is emotionally attached while the other is unaware.", etymology: "Greek para + Latin socialis", reason: "Common with AI assistants because of frequent conversation with the AI systems." },
+            { term: "Natural Language Processing", pronunciation: "/ˈnætʃ.ər.əl ˈlæŋ.ɡwɪdʒ ˈprɑː.ses.ɪŋ/", definition: "AI field enabling machines to understand, interpret then generate human language like responses.", etymology: "Latin naturalis + lingua + processus.", reason: "Enabler of AI model training. NLP algorithm determines the quality of its outcome." },
+            { term: "Ethical AI", pronunciation: "/ˈeθ.ɪ.kəl eɪ.aɪ/", definition: "AI systems designed with moral principles emphasizing fairness, accountability, and transparency.", etymology: "Greek ethikos (moral) + AI", reason: "Framework within which AI must operate rather than practicing unethical options." },
+            { term: "Digital Wellbeing", pronunciation: "/ˈdɪdʒ.ɪ.təl ˈwel.biː.ɪŋ/", definition: "The holistic health of individuals in relation to their technology use and digital interactions.", etymology: "Latin digitalis + English wel + beon", reason: "AI can provide support or harm to its user if not properly maintained." },
+            { term: "Uncanny Valley", pronunciation: "/ʌnˈkæn.i ˈvæl.i/", definition: "The unsettling feeling when humanoid objects appear almost human but not quite.", etymology: "Scottish uncanny + Old English dæl", reason: "AI creates emotional discomforting situations that even expert cannot explain but improves as they are trained further." },
+            { term: "Training Data", pronunciation: "/ˈtreɪ.nɪŋ ˈdeɪ.tə/", definition: "Information used to teach machine learning models.", etymology: "Latin trahere + datum", reason: "Source and determining factor of AI bias and cultural perspective." },
+            { term: "Contextual Awareness", pronunciation: "/kənˈteks.tʃu.əl əˈwer.nəs/", definition: "Ability to understand and respond appropriately to situational nuances.", etymology: "Latin contextus + Old English gewær", reason: "Essential for a empathic outcome which is often missing in AI chats." },
+            { term: "Persona", pronunciation: "/pərˈsoʊ.nə/", definition: "The face or character that presents in interactions.", etymology: "Latin persona", reason: "Persona is affecting how empathy is perceived and delivered." },
+            { term: "Companion AI", pronunciation: "/kəmˈpæn-jən eɪˈaɪ/", definition: "AI designed to provide emotional support.", etymology: "French compaignon", reason: "Growing topic in AI mental health technology solutions." },
+            { term: "Mood Tracking", pronunciation: "/muːd ˈtræk-ɪŋ/", definition: "Monitoring and recording mood over time.", etymology: "Old English mōd + Old French trac", reason: "Used in wellness apps." },
+            { term: "Black Box", pronunciation: "/blæk bɑːks/", definition: "A system whose internal workings are opaque to users.", etymology: "Old English blæc + Greek pyxis", reason: "Most of the AI systems runs without disclosing it's algorithmic transparency." },
+            { term: "Validation", pronunciation: "/ˌvæl.ɪˈdeɪ.ʃən/", definition: "an act, process, or instance of validating", etymology: "Latin validus", reason: "Core actions need validation from multiple sources." },
+            { term: "Vulnerability", pronunciation: "/ˌvʌl.nər.əˈbɪl.ə.t̬i/", definition: "Capable of being physically or emotionally wounded", etymology: "Latin word vulnus", reason: "Empathetic exchange often asymmetric with AI thus creates them vulnerable." }
+        ];
+
+        const glossaryOtherwise = [
+            { term: "Empathy Protocol", pronunciation: "/ˈem.pə.θi ˈproʊ.t̬ə.kɑːl/", definition: "Standardized ethical frameworks ensuring AI systems prioritize dignity, cultural responsiveness, and emotional safety in every interaction, treating empathy as infrastructure rather than feature.", etymology: "", reason: "Transforms 'artificial empathy' from simulation to commitment; makes empathy a structural requirement like security protocols." },
+            { term: "Equity Algorithm", pronunciation: "/ˈek.wə.t̬i ˈæl.ɡə.rɪð.əm/", definition: "Computational systems explicitly designed to counteract bias, redistribute attention to marginalized voices, and repair rather than replicate historical harms.", etymology: "", reason: "Proactive replacement for 'algorithmic bias'; shifts from identifying problems to building solutions." },
+             { term: "Empathy Protocol", pronunciation: "/ˈem.pə.θi ˈproʊ.t̬ə.kɑːl/", definition: "Standardized ethical frameworks ensuring AI systems prioritize dignity, cultural responsiveness, and emotional safety in every interaction, treating empathy as infrastructure rather than feature.", etymology: "", reason: "Transforms 'artificial empathy' from simulation to commitment; makes empathy a structural requirement like security protocols." },
+            { term: "Equity Algorithm", pronunciation: "/ˈek.wə.t̬i ˈæl.ɡə.rɪð.əm/", definition: "Computational systems explicitly designed to counteract bias, redistribute attention to marginalized voices, and repair rather than replicate historical harms.", etymology: "", reason: "Proactive replacement for 'algorithmic bias'; shifts from identifying problems to building solutions." }
+        ];
+
+        function positionTermsInCircle(terms, containerId, radius) {
+            const container = $(`#${containerId}`);
+            const centerX = container.parent().width() / 2;
+            const centerY = container.parent().height() / 2;
+            
+            // Calculate positions to avoid overlap
+            const positions = [];
+            const minDistance = 100; // Minimum distance between terms
+            
+            terms.forEach((item, index) => {
+                let angle, x, y, attempts = 0;
+                let validPosition = false;
+                
+                // Try to find a non-overlapping position
+                while (!validPosition && attempts < 50) {
+                    angle = (2 * Math.PI / terms.length) * index + (attempts * 0.1);
+                    const radiusVariation = radius + (Math.sin(index * 0.5) * 60);
+                    x = centerX + radiusVariation * Math.cos(angle);
+                    y = centerY + radiusVariation * Math.sin(angle);
+                    
+                    validPosition = true;
+                    for (let pos of positions) {
+                        const distance = Math.sqrt(Math.pow(x - pos.x, 2) + Math.pow(y - pos.y, 2));
+                        if (distance < minDistance) {
+                            validPosition = false;
+                            break;
+                        }
+                    }
+                    attempts++;
+                }
+                
+                positions.push({ x, y });
+                
+                const termEl = $(`<div class="term-orbit" data-index="${index}">${item.term}</div>`);
+                termEl.css({
+                    left: `${x}px`,
+                    top: `${y}px`,
+                    animationDelay: `${index * 0.15}s`,
+                    animationDuration: `${8 + (index % 3) * 2}s`
+                });
+
+                container.append(termEl);
+            });
+        }
+
+        function showDetail(data, panelId, sectionId) {
+            const panel = $(`#${panelId}`);
+            let html = `
+                <button class="close-btn">&times;</button>
+                <h3>${data.term}</h3>
+                <div class="pronunciation">${data.pronunciation}</div>
+                <div class="definition">
+                    <div class="label">Definition</div>
+                    ${data.definition}
+                </div>
+            `;
+
+            if (data.etymology) {
+                html += `
+                    <div class="etymology">
+                        <div class="label">Etymology</div>
+                        ${data.etymology}
+                    </div>
+                `;
+            }
+
+            html += `
+                <div class="reason">
+                    <div class="label">Reason for Inclusion</div>
+                    ${data.reason}
+                </div>
+            `;
+
+            panel.html(html);
+            panel.addClass('show');
+
+            $(`#${sectionId} .term-orbit`).removeClass('active');
+            $(`#${sectionId} .term-orbit[data-index="${data.index}"]`).addClass('active');
+        }
+
+        function initGlossary(data, termsId, panelId, sectionId, radius) {
+            positionTermsInCircle(data.map((item, i) => ({ ...item, index: i })), termsId, radius);
+
+            $(`#${termsId}`).on('click', '.term-orbit', function() {
+                const index = $(this).data('index');
+                showDetail({ ...data[index], index }, panelId, sectionId);
+            });
+
+            $(`#${termsId}`).on('mouseenter', '.term-orbit', function() {
+                $(this).css('text-decoration', 'underline');
+            });
+
+            $(`#${termsId}`).on('mouseleave', '.term-orbit', function() {
+                $(this).css('text-decoration', 'none');
+            });
+
+            $(`#${panelId}`).on('click', '.close-btn', function() {
+                $(`#${panelId}`).removeClass('show');
+                $(`#${sectionId} .term-orbit`).removeClass('active');
+            });
+        }
+
+        $(document).ready(function() {
+            initGlossary(glossaryPresent, 'present-terms', 'present-detail', 'present', 320);
+            initGlossary(glossaryOtherwise, 'otherwise-terms', 'otherwise-detail', 'otherwise', 200);
+
+            // Smooth scroll
+            $('a.citation-link').on('click', function(e) {
+                e.preventDefault();
+            });
+        });
+    </script>
+</body>
+</html>
