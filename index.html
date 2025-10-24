@@ -826,6 +826,17 @@
 
         function showDetail(data, panelId, sectionId) {
             const panel = $(`#${panelId}`);
+
+            // console.log(panelId)
+
+            let reasonFieldText = 'Reason for Inclusion';
+
+            if (panelId === 'otherwise-detail') {
+                reasonFieldText = 'Why evolved';
+            } else {
+                reasonFieldText = 'Reason for Inclusion';
+            }
+
             let html = `
                 <button class="close-btn">&times;</button>
                 <div class="term-header">
@@ -856,7 +867,7 @@
 
             html += `
                 <div class="reason">
-                    <div class="label">Reason for Inclusion</div>
+                    <div class="label">${reasonFieldText}</div>
                     ${data.reason}
                 </div>
             `;
