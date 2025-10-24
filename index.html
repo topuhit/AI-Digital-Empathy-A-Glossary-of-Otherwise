@@ -402,29 +402,337 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        const glossaryPresent = [
-            { term: "Empathy", pronunciation: "/ˈɛm-pə-thi/", definition: "The ability to understand and share the feelings of another.", etymology: "Greek empatheia", reason: "Core to AI ethics discussions." },
-            { term: "Artificial Empathy", pronunciation: "/ˌɑːr.tɪˈfɪʃ.əl ˈem.pə.θi/", definition: "Artificial empathy is the development of artificial intelligence that can detect, understand, and respond to human emotions in a way that seems considerate and supportive", etymology: "artificial empathy comes from the recent combination of the word artificial with the much older concept of empathy", reason: "Core concept constantly appearing in AI ethics discussions" },
-            { term: "Empathy Gap", pronunciation: "/ˈem.pə.θi ɡæp/", definition: "The difference between expected and delivered empathetic response in AI interactions.", etymology: "", reason: "AI agents may lack the emotional intelligence to handle sensitive or complex situations" },
-            { term: "Algorithmic Bias", pronunciation: "/ˌæl.ɡəˈrɪð.mɪk ˈbaɪ.əs/", definition: "Repeatable errors in AI systems that create unfair outcomes", etymology: "From Arabic al-Khwarizmi + French biais", reason: "Critical barrier to universal empathy" },
-            { term: "Emotional Intelligence", pronunciation: "/ɪˈmoʊ.ʃən.əl ɪnˈtel.ɪ.dʒəns/", definition: "The capacity to recognize, understand, and manage emotions.", etymology: "Latin emotio + intelligentia", reason: "Benchmark that AI aspires to." },
-            { term: "Sentiment Analysis", pronunciation: "/ˈsen.tɪ.mənt əˈnæl.ə.sɪs/", definition: "Computational identification and categorization of emotional tone in user data.", etymology: "Latin sentire + Greek analusis", reason: "Technical approach to detecting emotion." },
-            { term: "Anthropomorphism", pronunciation: "/ˌæn.θrə.pəˈmɔːr.fɪ.zəm/", definition: "The attribution of human characteristics to non-human entities.", etymology: "Greek anthropos (human) + morphē (form, shape).", reason: "Helps human-AI connection." },
-            { term: "Chatbot", pronunciation: "/ˈtʃæt.bɑːt/", definition: "Conversational AI program designed for human machine dialogue.", etymology: "Chat (informal talk) + bot (shortened from robot)", reason: "Primary interface to facilitate human conversation with machine." },
-            { term: "Parasocial Relationship", pronunciation: "/ˌper.ə.soʊ.ʃəl rɪˈleɪ.ʃən.ʃɪp/", definition: "One-sided relationship where one party is emotionally attached while the other is unaware.", etymology: "Greek para + Latin socialis", reason: "Common with AI assistants because of frequent conversation with the AI systems." },
-            { term: "Natural Language Processing", pronunciation: "/ˈnætʃ.ər.əl ˈlæŋ.ɡwɪdʒ ˈprɑː.ses.ɪŋ/", definition: "AI field enabling machines to understand, interpret then generate human language like responses.", etymology: "Latin naturalis + lingua + processus.", reason: "Enabler of AI model training. NLP algorithm determines the quality of its outcome." },
-            { term: "Ethical AI", pronunciation: "/ˈeθ.ɪ.kəl eɪ.aɪ/", definition: "AI systems designed with moral principles emphasizing fairness, accountability, and transparency.", etymology: "Greek ethikos (moral) + AI", reason: "Framework within which AI must operate rather than practicing unethical options." },
-            { term: "Digital Wellbeing", pronunciation: "/ˈdɪdʒ.ɪ.təl ˈwel.biː.ɪŋ/", definition: "The holistic health of individuals in relation to their technology use and digital interactions.", etymology: "Latin digitalis + English wel + beon", reason: "AI can provide support or harm to its user if not properly maintained." },
-            { term: "Uncanny Valley", pronunciation: "/ʌnˈkæn.i ˈvæl.i/", definition: "The unsettling feeling when humanoid objects appear almost human but not quite.", etymology: "Scottish uncanny + Old English dæl", reason: "AI creates emotional discomforting situations that even expert cannot explain but improves as they are trained further." },
-            { term: "Training Data", pronunciation: "/ˈtreɪ.nɪŋ ˈdeɪ.tə/", definition: "Information used to teach machine learning models.", etymology: "Latin trahere + datum", reason: "Source and determining factor of AI bias and cultural perspective." },
-            { term: "Contextual Awareness", pronunciation: "/kənˈteks.tʃu.əl əˈwer.nəs/", definition: "Ability to understand and respond appropriately to situational nuances.", etymology: "Latin contextus + Old English gewær", reason: "Essential for a empathic outcome which is often missing in AI chats." },
-            { term: "Persona", pronunciation: "/pərˈsoʊ.nə/", definition: "The face or character that presents in interactions.", etymology: "Latin persona", reason: "Persona is affecting how empathy is perceived and delivered." },
-            { term: "Companion AI", pronunciation: "/kəmˈpæn-jən eɪˈaɪ/", definition: "AI designed to provide emotional support.", etymology: "French compaignon", reason: "Growing topic in AI mental health technology solutions." },
-            { term: "Mood Tracking", pronunciation: "/muːd ˈtræk-ɪŋ/", definition: "Monitoring and recording mood over time.", etymology: "Old English mōd + Old French trac", reason: "Used in wellness apps." },
-            { term: "Black Box", pronunciation: "/blæk bɑːks/", definition: "A system whose internal workings are opaque to users.", etymology: "Old English blæc + Greek pyxis", reason: "Most of the AI systems runs without disclosing it's algorithmic transparency." },
-            { term: "Validation", pronunciation: "/ˌvæl.ɪˈdeɪ.ʃən/", definition: "an act, process, or instance of validating", etymology: "Latin validus", reason: "Core actions need validation from multiple sources." },
-            { term: "Vulnerability", pronunciation: "/ˌvʌl.nər.əˈbɪl.ə.t̬i/", definition: "Capable of being physically or emotionally wounded", etymology: "Latin word vulnus", reason: "Empathetic exchange often asymmetric with AI thus creates them vulnerable." }
-        ];
+        const glossaryPresent =[
+  {
+    "term": "Empathy",
+    "pronunciation": "/ˈɛm-pə-thi/",
+    "definition": "The ability to understand and share the feelings of another.",
+    "etymology": "Greek empatheia",
+    "reason": "Core to AI ethics discussions."
+  },
+  {
+    "term": "Artificial Empathy",
+    "pronunciation": "/ˌɑːr.tɪˈfɪʃ.əl ˈem.pə.θi/",
+    "definition": "Artificial empathy is the development of artificial intelligence that can detect, understand, and respond to human emotions in a way that seems considerate and supportive",
+    "etymology": "artificial empathy comes from the recent combination of the word artificial with the much older concept of empathy",
+    "reason": "Core concept constantly appearing in AI ethics discussions"
+  },
+  {
+    "term": "Empathy gap",
+    "pronunciation": "/ˈem.pə.θi ɡæp/",
+    "definition": "The difference between expected and delivered empathetic response in AI interactions.",
+    "etymology": "",
+    "reason": "AI agents may lack the emotional intelligence to handle sensitive or complex situations"
+  },
+  {
+    "term": "Algorithmic Bias",
+    "pronunciation": "/ˌæl.ɡəˈrɪð.mɪk ˈbaɪ.əs/",
+    "definition": "Repeatable errors in AI systems that create unfair outcomes",
+    "etymology": "From Arabic al-Khwarizmi + French biais",
+    "reason": "Critical barrier to universal empathy"
+  },
+  {
+    "term": "Emotional Intelligence",
+    "pronunciation": "/ɪˈmoʊ.ʃən.əl ɪnˈtel.ɪ.dʒəns/",
+    "definition": "The capacity to recognize, understand, and manage emotions.",
+    "etymology": "Latin emotio + intelligentia",
+    "reason": "Benchmark that AI aspires to."
+  },
+  {
+    "term": "Sentiment Analysis",
+    "pronunciation": "/ˈsen.tɪ.mənt əˈnæl.ə.sɪs/",
+    "definition": "Computational identification and categorization of emotional tone in user data.",
+    "etymology": "Latin sentire + Greek analusis",
+    "reason": "Technical approach to detecting emotion."
+  },
+  {
+    "term": "Anthropomorphism",
+    "pronunciation": "/ˌæn.θrə.pəˈmɔːr.fɪ.zəm/",
+    "definition": "The attribution of human characteristics to non-human entities.",
+    "etymology": "Greek anthropos (human) + morphē (form, shape).",
+    "reason": "Helps human-AI connection."
+  },
+  {
+    "term": "Chatbot",
+    "pronunciation": "/ˈtʃæt.bɑːt/",
+    "definition": "Conversational AI program designed for human machine dialogue.",
+    "etymology": "Chat (informal talk) + bot (shortened from robot)",
+    "reason": "Primary interface to facilitate human conversation with machine."
+  },
+  {
+    "term": "Parasocial Relationship",
+    "pronunciation": "/ˌper.ə.soʊ.ʃəl rɪˈleɪ.ʃən.ʃɪp/",
+    "definition": "One-sided relationship where one party is emotionally attached while the other is unaware.",
+    "etymology": "Greek para + Latin socialis",
+    "reason": "Common with AI assistants because of frequent conversation with the AI systems."
+  },
+  {
+    "term": "Natural Language Processing",
+    "pronunciation": "/ˈnætʃ.ər.əl ˈlæŋ.ɡwɪdʒ ˈprɑː.ses.ɪŋ/",
+    "definition": "AI field enabling machines to understand, interpret then generate human language like responses.",
+    "etymology": "Latin naturalis + lingua + processus.",
+    "reason": "Enabler of AI model training. NLP algorithm determines the quality of its outcome."
+  },
+  {
+    "term": "Ethical AI",
+    "pronunciation": "/ˈeθ.ɪ.kəl eɪ.aɪ/",
+    "definition": "AI systems designed with moral principles emphasizing fairness, accountability, and transparency.",
+    "etymology": "Greek ethikos (moral) + AI",
+    "reason": "Framework within which AI must operate rather than practicing unethical options."
+  },
+  {
+    "term": "Digital Wellbeing",
+    "pronunciation": "/ˈdɪdʒ.ɪ.təl ˈwel.biː.ɪŋ/",
+    "definition": "The holistic health of individuals in relation to their technology use and digital interactions.",
+    "etymology": "Latin digitalis + English wel + beon",
+    "reason": "AI can provide support or harm to its user if not properly maintained."
+  },
+  {
+    "term": "Uncanny Valley",
+    "pronunciation": "/ʌnˈkæn.i ˈvæl.i/",
+    "definition": "The unsettling feeling when humanoid objects appear almost human but not quite.",
+    "etymology": "Scottish uncanny + Old English dæl",
+    "reason": "AI creates emotional discomforting situations that even expert cannot explain but improves as they are trained further."
+  },
+  {
+    "term": "Training Data",
+    "pronunciation": "/ˈtreɪ.nɪŋ ˈdeɪ.tə/",
+    "definition": "Information used to teach machine learning models.",
+    "etymology": "Latin trahere + datum",
+    "reason": "Source and determining factor of AI bias and cultural perspective."
+  },
+  {
+    "term": "Contextual Awareness",
+    "pronunciation": "/kənˈteks.tʃu.əl əˈwer.nəs/",
+    "definition": "Ability to understand and respond appropriately to situational nuances.",
+    "etymology": "Latin contextus + Old English gewær",
+    "reason": "Essential for a empathic outcome which is often missing in AI chats."
+  },
+  {
+    "term": "Persona",
+    "pronunciation": "/pərˈsoʊ.nə/",
+    "definition": "The face or character that presents in interactions.",
+    "etymology": "Latin persona",
+    "reason": "Persona is affecting how empathy is perceived and delivered."
+  },
+  {
+    "term": "Companion AI",
+    "pronunciation": "/kəmˈpæn-jən eɪˈaɪ/",
+    "definition": "AI designed to provide emotional support.",
+    "etymology": "French compaignon",
+    "reason": "Growing topic in AI mental health technology solutions."
+  },
+  {
+    "term": "Mood Tracking",
+    "pronunciation": "/muːd ˈtræk-ɪŋ/",
+    "definition": "Monitoring and recording mood over time.",
+    "etymology": "Old English mōd + Old French trac",
+    "reason": "Used in wellness apps."
+  },
+  {
+    "term": "Black Box",
+    "pronunciation": "/blæk bɑːks/",
+    "definition": "A system whose internal workings are opaque to users.",
+    "etymology": "Old English blæc + Greek pyxis",
+    "reason": "Most of the AI systems runs without disclosing it's algorithmic transparency."
+  },
+  {
+    "term": "Validation",
+    "pronunciation": "/ˌvæl.ɪˈdeɪ.ʃən/",
+    "definition": "an act, process, or instance of validating",
+    "etymology": "Latin validus",
+    "reason": "Core actions need validation from multiple sources."
+  },
+  {
+    "term": "Vulnerability",
+    "pronunciation": "/ˌvʌl.nər.əˈbɪl.ə.t̬i/",
+    "definition": "Capable of being physically or emotionally wounded",
+    "etymology": "Latin word vulnus",
+    "reason": "Empathetic exchange often asymmetric with AI thus creates them vulnerable."
+  },
+  {
+    "term": "Cultural Intelligence",
+    "pronunciation": "/ˈkʌl.tʃər.əl ɪnˈtel.ɪ.dʒəns/",
+    "definition": "Capability to function effectively across cultural contexts and understand diverse perspectives.",
+    "etymology": "Latin cultura + intelligentia.",
+    "reason": "Necessary for universal empathy."
+  },
+  {
+    "term": "Digital Divide",
+    "pronunciation": "/ˈdɪdʒ.ɪ.təl dɪˈvaɪd/",
+    "definition": "Gap between those with and without access to digital technology and literacy.",
+    "etymology": "Latin digitalis + Latin dividere",
+    "reason": "Barrier to universal empathetic AI access"
+  },
+  {
+    "term": "Empathy Mapping",
+    "pronunciation": "/ˈem.pə.θi ˈmæp.ɪŋ/",
+    "definition": "UX technique visualizing user thoughts, feelings, and behaviors",
+    "etymology": "Greek empatheia + Latin mappa",
+    "reason": "Design tool for building empathetic systems"
+  },
+  {
+    "term": "Digital Intimacy",
+    "pronunciation": "/ˈdɪdʒ.ɪ.təl ˈɪn.t̬ə.mə.si/",
+    "definition": "Close, personal connection formed through digital mediation",
+    "etymology": "Latin digitalis + intimus",
+    "reason": "Emerging phenomenon in AI relationships"
+  },
+  {
+    "term": "Accountability",
+    "pronunciation": "/əˌkaʊn.təˈbɪl.ə.ti/",
+    "definition": "The obligation to accept responsibility for one's actions, decisions, and their consequences",
+    "etymology": "From Old French aconter + Latin computare",
+    "reason": "Critical for AI empathy but rarely operationalized"
+  },
+  {
+    "term": "Compassion",
+    "pronunciation": "/kəmˈpæʃ.ən/",
+    "definition": "The feeling of deep sympathy and sorrow for another who is suffering, accompanied by a strong desire to alleviate the pain or address the cause of suffering",
+    "etymology": "From Latin compati + pati",
+    "reason": "compassion adds action and commitment to reduce suffering"
+  },
+  {
+    "term": "Empathy Spectrum",
+    "pronunciation": "/ˈem.pə.θi ˈspek.trəm/",
+    "definition": "The range of empathetic capabilities from cognitive understanding to deep emotional resonance, recognizing empathy as gradated rather than binary.",
+    "etymology": "From Greek empatheia + Latin spectrum",
+    "reason": "Acknowledges different levels and types of empathetic response are possible and valuable"
+  },
+  {
+    "term": "Sympathy",
+    "pronunciation": "/ˈsɪm.pə.θi/",
+    "definition": "Feelings of pity and sorrow for someone else's misfortune",
+    "etymology": "From Greek sympatheia",
+    "reason": "sympathy is feeling for someone while empathy is feeling with them"
+  },
+  {
+    "term": "Active Listening",
+    "pronunciation": "/ˈæk.tɪv ˈlɪs.ən.ɪŋ/",
+    "definition": "Communication technique involving full concentration, understanding, responding thoughtfully",
+    "etymology": "From Latin activus + Old English hlysnan",
+    "reason": "Essential for meaningful conversational AI beyond simple response generation"
+  },
+  {
+    "term": "Affirmative Response",
+    "pronunciation": "/əˈfɜːr.mə.tɪv rɪˈspɑːns/",
+    "definition": "Communication that validates, confirms, or positively acknowledges another's statement",
+    "etymology": "From Latin affirmare + respondere",
+    "reason": "AI must learn when affirmation serves care versus when it enables harmful behaviors."
+  },
+  {
+    "term": "Emotional Validation",
+    "pronunciation": "/ɪˈmoʊ.ʃən.əl ˌvæl.ɪˈdeɪ.ʃən/",
+    "definition": "Recognition and acceptance of another person's emotional experience as legitimate and understandable",
+    "etymology": "From Latin emotio + validus",
+    "reason": "Central to therapeutic and empathetic interactions. Increasingly programmed into AI but often executed superficially without genuine understanding"
+  },
+  {
+    "term": "Non-verbal Indicators",
+    "pronunciation": "/nɑːnˈvɜːr.bəl ˈɪn.dɪ.keɪ.tərz/",
+    "definition": "Physical cues such as facial expressions, body language, tone of voice, and gestures that communicate emotional states beyond spoken words",
+    "etymology": "From Latin non (not) + verbum (word) + indicare",
+    "reason": "Critical dimension of human empathy that text-based AI cannot access"
+  },
+  {
+    "term": "Mimicry/Mirroring",
+    "pronunciation": "/ˈmɪm.ɪ.kri / ˈmɪr.ər.ɪŋ/",
+    "definition": "The unconscious imitation of another's gestures, speech patterns, or emotional expressions, often facilitating rapport and emotional connection",
+    "etymology": "From Greek mimetikos (imitative) / Latin mirari",
+    "reason": "When AI mimics emotional expression, it raises questions about authenticity versus manipulation"
+  },
+  {
+    "term": "Behavioral Algorithm",
+    "pronunciation": "/bɪˈheɪv.jər.əl ˈæl.ɡə.rɪð.əm/",
+    "definition": "Computational formula that predicts, influences, or responds to human actions and patterns based on collected data and programmed rules.",
+    "etymology": "From Middle English behaven",
+    "reason": "Shapes how AI interprets and responds to emotional behaviors"
+  },
+  {
+    "term": "Contextual Response",
+    "pronunciation": "/kənˈteks.tʃu.əl rɪˈspɑːns/",
+    "definition": "Communication that appropriately considers and integrates the specific situation, history, cultural background",
+    "etymology": "From Latin contextus + respondere",
+    "reason": "AI often fails by applying generic responses without understanding situational nuances"
+  },
+  {
+    "term": "Compassion Fatigue",
+    "pronunciation": "/kəmˈpæʃ.ən fəˈtiːɡ/",
+    "definition": "Emotional and physical exhaustion resulting from prolonged exposure to others' trauma and suffering",
+    "etymology": "From Latin compati + French fatigue",
+    "reason": "It can lead to symptoms like cynicism, detachment, irritability, and physical ailments"
+  },
+  {
+    "term": "Empathy Turing Test",
+    "pronunciation": "/ˈem.pə.θi ˈtjʊər.ɪŋ test/",
+    "definition": "Proposed evaluation measuring whether AI can demonstrate empathetic responses indistinguishable from human emotional understanding and care",
+    "etymology": "From Greek empatheia + Alan Turing+ Latin testum",
+    "reason": "Emerging concept for evaluating AI empathy"
+  },
+  {
+    "term": "Deepfake Empathy",
+    "pronunciation": "/ˈdiːp.feɪk ˈem.pə.θi/",
+    "definition": "Artificially generated empathetic responses that convincingly simulate genuine care while lacking authentic emotional understanding or ethical commitment.",
+    "etymology": "From deep learning + fake + Greek empatheia",
+    "reason": "Critical term for recognizing manipulative emotional AI"
+  },
+  {
+    "term": "Multicultural Empathy",
+    "pronunciation": "/ˌmʌl.tiˈkʌl.tʃər.əl ˈem.pə.θi/",
+    "definition": "Ability to understand and appropriately respond to emotional expressions and needs across diverse cultural contexts, recognizing culture shapes emotional experience",
+    "etymology": "From Latin multus + cultura + Greek empatheia",
+    "reason": "It requires understanding that empathy itself is culturally constructed and expressed differently across communities."
+  },
+  {
+    "term": "Accessibility",
+    "pronunciation": "/ækˌses.əˈbɪl.ə.ti/",
+    "definition": "The quality of being easily reached, entered, or used by all people, particularly those with disabilities or facing barriers",
+    "etymology": "From Latin accessus  + bility",
+    "reason": "Accessibility must become foundational principle ensuring empathetic AI. It serves all communities, especially marginalized ones."
+  },
+  {
+    "term": "Feedback Loop",
+    "pronunciation": "/ˈfiːd.bæk luːp/",
+    "definition": "A system structure where outputs circle back as inputs, creating continuous cycles of information",
+    "etymology": "From feed + back + loop",
+    "reason": "Mechanism for AI learning and improvement."
+  },
+  {
+    "term": "Data Privacy",
+    "pronunciation": "/ˈdeɪ.tə ˈpraɪ.və.si/",
+    "definition": "The right to control personal information, determining what data is collected, how it's used, and who can access it.",
+    "etymology": "From Latin datum + privatus",
+    "reason": "Fundamental concern for empathetic AI. Data is deeply personal and vulnerable, requiring stronger protections."
+  },
+  {
+    "term": "Empathy-as-a-Service",
+    "pronunciation": "/ˈem.pə.θi əz ə ˈsɜːr.vɪs/",
+    "definition": "Commercialized model offering AI interaction as purchasable product",
+    "etymology": "From Greek empatheia + Software-as-a-Service",
+    "reason": "Commodification of care and emotional support raises ethical questions about profiting from human vulnerability."
+  },
+  {
+    "term": "Empathic Interface",
+    "pronunciation": "/emˈpæθ.ɪk ˈɪn.tər.feɪs/",
+    "definition": "Design of human-AI interaction points that facilitates responses, and connection.",
+    "etymology": "From Greek empatheia + Latin inter + facies",
+    "reason": "Interface design choices shape possibilities for exchange between humans and AI."
+  },
+  {
+    "term": "Manipulative Empathy",
+    "pronunciation": "/məˈnɪp.jə.lə.tɪv ˈem.pə.θi/",
+    "definition": "Strategic use of empathetic understanding to exploit vulnerabilities, control behavior",
+    "etymology": "From Latin manipulus + Greek empatheia",
+    "reason": "Dark side of AI. Emotions can be weaponized for commercial exploitation."
+  },
+  {
+    "term": "Training Dataset Bias",
+    "pronunciation": "/ˈtreɪ.nɪŋ ˈdeɪ.tə.set ˈbaɪ.əs/",
+    "definition": "Systematic skewing in machine learning data that reflects prejudices, underrepresentation, or distorted views of certain groups.",
+    "etymology": "From Latin trahere + datum + Old French biais",
+    "reason": "AI trained on biased data will show empathy unequally across demographics, perpetuating systemic harm."
+  }
+];
 
         const glossaryOtherwise = [
             { term: "Empathy Protocol", pronunciation: "/ˈem.pə.θi ˈproʊ.t̬ə.kɑːl/", definition: "Standardized frameworks ensuring AI systems prioritize dignity, cultural responsiveness, and emotional safety in every interaction", etymology: "", reason: "Transforms 'artificial empathy' and makes empathy a structural requirement like security protocols." },
